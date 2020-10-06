@@ -27,7 +27,6 @@
                   @blockDeselect="deselectBlock"
                   :scene.sync="scene" />
                  <vue-block-property :property="selectedBlockProperty" />
-                <span v-for="(n, index) in copied" :key="index">Copied {{n}};&nbsp;</span>
               </el-card>
             </drop>
           </el-col>
@@ -86,6 +85,11 @@ export default {
             },
             {
               name: 'out1',
+              type: 'event',
+              attr: 'output',
+            },
+            {
+              name: 'out2',
               type: 'event',
               attr: 'output',
             },
@@ -201,8 +205,8 @@ export default {
     },
     drop(e) {
       this.dialog.isShow = true;
-      this.copied.push(e.data);
-      this.$refs.container.addNewBlock('test3');
+      console.log(e.data);
+      this.$refs.container.addNewBlock('test1');
     },
   },
 };
